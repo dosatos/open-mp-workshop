@@ -1,4 +1,5 @@
 Source: http://www.archer.ac.uk/training/course-material/2018/03/openmp-soton/index.php
+# Shared-Memory	Programming	with	OpenMP
 # open-mp-workshop
 
 ### Exercise	1:	HelloWorld
