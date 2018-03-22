@@ -1,0 +1,29 @@
+--------------------------------------------------------------------------------
+*** guest34   Job: 5191516.sdb   started: 20/03/18 12:52:01   host: mom3 ***
+*** guest34   Job: 5191516.sdb   started: 20/03/18 12:52:01   host: mom3 ***
+*** guest34   Job: 5191516.sdb   started: 20/03/18 12:52:01   host: mom3 ***
+*** guest34   Job: 5191516.sdb   started: 20/03/18 12:52:01   host: mom3 ***
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+Running OpenMP program program on 1 threads
+Started at Tue Mar 20 12:52:02 GMT 2018
+--------------------------------------------------------------------------------
+aprun: file ./program not found
+aprun: Exiting due to errors. Application aborted
+
+real	0m0.943s
+user	0m0.124s
+sys	0m0.112s
+--------------------------------------------------------------------------------
+Finished at Tue Mar 20 12:52:03 GMT 2018
+--------------------------------------------------------------------------------
+
+Resources requested: ncpus=24,place=free,walltime=00:01:00
+Resources allocated: cpupercent=0,cput=00:00:00,mem=0kb,ncpus=24,vmem=0kb,walltime=00:00:03
+
+*** guest34   Job: 5191516.sdb   ended: 20/03/18 12:52:03   queue: R5175314 ***
+*** guest34   Job: 5191516.sdb   ended: 20/03/18 12:52:03   queue: R5175314 ***
+*** guest34   Job: 5191516.sdb   ended: 20/03/18 12:52:03   queue: R5175314 ***
+*** guest34   Job: 5191516.sdb   ended: 20/03/18 12:52:03   queue: R5175314 ***
+--------------------------------------------------------------------------------

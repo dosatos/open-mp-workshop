@@ -1,0 +1,2 @@
+area.o: In function `main':
+/work/y14/y14/guest34/OMP-exercises/C/Mandelbrot/area.c:69: undefined reference to `print'

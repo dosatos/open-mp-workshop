@@ -1,0 +1,47 @@
+--------------------------------------------------------------------------------
+*** guest34   Job: 5192493.sdb   started: 20/03/18 16:21:12   host: mom4 ***
+*** guest34   Job: 5192493.sdb   started: 20/03/18 16:21:12   host: mom4 ***
+*** guest34   Job: 5192493.sdb   started: 20/03/18 16:21:12   host: mom4 ***
+*** guest34   Job: 5192493.sdb   started: 20/03/18 16:21:12   host: mom4 ***
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
+Running OpenMP program traffic on 1 threads
+Started at Tue Mar 20 16:21:13 GMT 2018
+--------------------------------------------------------------------------------
+Length of road is 100000
+Number of iterations is 2000 
+Target density of cars is 0.520000 
+Initialising road ...
+...done
+Actual density of cars is 0.517560
+
+At iteration 200 average velocity is 0.919951 
+At iteration 400 average velocity is 0.926559 
+At iteration 600 average velocity is 0.928743 
+At iteration 800 average velocity is 0.930308 
+At iteration 1000 average velocity is 0.930849 
+At iteration 1200 average velocity is 0.931196 
+At iteration 1400 average velocity is 0.931312 
+At iteration 1600 average velocity is 0.931506 
+At iteration 1800 average velocity is 0.931737 
+At iteration 2000 average velocity is 0.931989 
+
+Finished
+Application 30323355 resources: utime ~0s, stime ~0s, Rss ~7148, inblocks ~5842, outblocks ~14748
+
+real	0m3.448s
+user	0m0.360s
+sys	0m0.172s
+--------------------------------------------------------------------------------
+Finished at Tue Mar 20 16:21:17 GMT 2018
+--------------------------------------------------------------------------------
+
+Resources requested: ncpus=24,place=free,walltime=00:01:00
+Resources allocated: cpupercent=0,cput=00:00:01,mem=0kb,ncpus=24,vmem=0kb,walltime=00:00:05
+
+*** guest34   Job: 5192493.sdb   ended: 20/03/18 16:21:17   queue: R5175314 ***
+*** guest34   Job: 5192493.sdb   ended: 20/03/18 16:21:17   queue: R5175314 ***
+*** guest34   Job: 5192493.sdb   ended: 20/03/18 16:21:17   queue: R5175314 ***
+*** guest34   Job: 5192493.sdb   ended: 20/03/18 16:21:17   queue: R5175314 ***
+--------------------------------------------------------------------------------
