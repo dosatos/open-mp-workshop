@@ -1,0 +1,72 @@
+#!/bin/bash
+
+## declare an array of threads count
+declare -a scheduleType=("static" "dynamic" "guided")
+declare -a chunkSize=(1 2 4 8 16 32 64)
+declare -a numThreads=(1 2 3 6 12 24)
+
+# gcc -O3 -fopenmp -lm loops_1.c
+cc -O3 loops.c
+
+echo "Results: " > Report.txt
+## Run different scheduling types on 6 threads
+export OMP_NUM_THREADS=6
+export SCHED="static"
+export CHUNK_SIZE=null
+export OMP_SCHEDULE="static"
+echo "Number of threads: $OMP_NUM_THREADS, SCHEDULE TYPE: $OMP_SCHEDULE" >> Report.txt
+./a.out >> Report.txt
+
+export OMP_NUM_THREADS=6
+export SCHED="auto"
+export CHUNK_SIZE=null
+export OMP_SCHEDULE="auto"
+echo "Number of threads: $OMP_NUM_THREADS, SCHEDULE TYPE: $OMP_SCHEDULE" >> Report.txt
+./a.out >> Report.txt
+
+export OMP_NUM_THREADS=6
+for SCHED in "${scheduleType[@]}"
+do
+    for CHUNK_SIZE in "${chunkSize[@]}"
+    do
+        export SCHED=$SCHED
+        export CHUNK_SIZE=$CHUNK_SIZE
+        export OMP_SCHEDULE="$SCHED,$CHUNK_SIZE"
+        echo "Number of threads: $OMP_NUM_THREADS, SCHEDULE TYPE: $OMP_SCHEDULE" >> Report.txt
+        ./a.out >> Report.txt
+    done
+done
+
+## Run the best schedule type on various number of threads
+export SCHED="dynamic"
+export CHUNK_SIZE=8
+export OMP_SCHEDULE="$SCHED,$CHUNK_SIZE"
+
+for threads in "${numThreads[@]}"
+do
+    export OMP_NUM_THREADS=$threads
+    echo "Number of threads: $OMP_NUM_THREADS, SCHEDULE TYPE: $OMP_SCHEDULE" >> Report.txt
+    ./a.out >> Report.txt
+done
+
+## Run the best schedule type on various number of threads
+export SCHED="guided"
+export CHUNK_SIZE=4
+export OMP_SCHEDULE="$SCHED,$CHUNK_SIZE"
+
+for threads in "${numThreads[@]}"
+do
+    export OMP_NUM_THREADS=$threads
+    echo "Number of threads: $OMP_NUM_THREADS, SCHEDULE TYPE: $OMP_SCHEDULE" >> Report.txt
+    ./a.out >> Report.txt
+done
+
+## Run affinity
+cc -O3 loops_affinity.c
+
+for threads in "${numThreads[@]}"
+do
+    export OMP_NUM_THREADS=$threads
+    echo "Number of threads: $OMP_NUM_THREADS, SCHEDULE TYPE: Affinity" >> Report.txt
+    ./a.out >> Report.txt
+done

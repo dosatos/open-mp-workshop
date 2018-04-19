@@ -33,7 +33,7 @@ int main(int argc, char *argv[]) {
   schedule_kind = getenv("SCHED");
   chunk_size = atoi(getenv("CHUNK_SIZE"));
   run();
-  // printf("%s, %s, %d,  %f, %f, %f, %f, %f\n", getenv("OMP_NUM_THREADS"), schedule_kind, chunk_size, loop1_time, loop2_time, total_time, valid1_sum, valid2_sum);
+  printf("%s, %s, %d,  %f, %f, %f, %f, %f\n", getenv("OMP_NUM_THREADS"), schedule_kind, chunk_size, loop1_time, loop2_time, total_time, valid1_sum, valid2_sum);
 } // main func
 
 
@@ -53,7 +53,6 @@ void run(void) {
   } 
   end1  = omp_get_wtime();
   valid1(); 
-  printf("Total time for %d reps of loop 1 = %f\n",reps, (float)(end1-start1)); 
 
   init2();
   start2 = omp_get_wtime(); 
@@ -62,7 +61,6 @@ void run(void) {
   } 
   end2  = omp_get_wtime(); 
   valid2(); 
-  printf("Total time for %d reps of loop 2 = %f\n",reps, (float)(end2-start2)); 
 
   loop1_time = (float)(end1-start1);
   loop2_time = (float)(end2-start2);
@@ -75,6 +73,7 @@ void run(void) {
  * loops is parallelised
  * valid stores the result in a vraiable instead of printing
  */
+
 void init1(void){
   int i,j; 
 
@@ -90,6 +89,7 @@ void init1(void){
   }
 
   et_init1  = omp_get_wtime(); 
+  // printf("Init time for 1: %f\n", (float)(st_init1-et_init1)); 
 
 } // init1
 
@@ -117,13 +117,15 @@ void init2(void){
   }
 
   et_init2  = omp_get_wtime(); 
+  // printf("Init time for 2: %f\n", (float)(st_init2-et_init2)); 
  
 } // init2
 
 void loop1(void) { 
   int i,j;
   
-  //schedule type is set automatically above. thus, "runtime" is chosen.
+  //schedule type is set automatically above
+
   #pragma omp parallel for\
   schedule(runtime)\
   shared(a, b)\
@@ -145,7 +147,8 @@ void loop2(void) {
 
   rN2 = 1.0 / (double) (N*N);
 
-  //schedule type is set automatically above. thus, "runtime" is chosen.
+  //schedule type is set automatically above
+
   #pragma omp parallel for\
   shared(a, b, c, jmax, rN2)\
   schedule(runtime)\
@@ -170,8 +173,8 @@ void valid1(void) {
       suma += a[i][j];
     }
   }
-  printf("Loop 1 check: Sum of a is %lf\n", suma);
-  // valid1_sum = suma;
+  // printf("Loop 1 check: Sum of a is %lf\n", suma);
+  valid1_sum = suma;
 
 } // valid1
 
@@ -184,8 +187,8 @@ void valid2(void) {
   for (i=0; i<N; i++){ 
     sumc += c[i];
   }
-  printf("Loop 2 check: Sum of c is %f\n", sumc);
-  // valid2_sum = sumc;
+  // printf("Loop 2 check: Sum of c is %f\n", sumc);
+  valid2_sum = sumc;
 } // valid2
 
 
